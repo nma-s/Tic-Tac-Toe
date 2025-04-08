@@ -1,4 +1,5 @@
 :root {
+  margin: 50px auto;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -11,7 +12,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // max-width: 428px;
+  max-width: 428px;
+}
+
+.restart {
+  text-align: center;
+  padding: 15px;
 }
 
 .game {
@@ -24,6 +30,7 @@
   
   padding: 20px;
   border: 1px solid red;
+
     &__turn{
       font-size: 23px;
       grid-column: 1 / 4;
@@ -33,7 +40,23 @@
       align-items: center;
       border: 3px ridge whitesmoke;
       margin: 5px auto;
-      // padding: 40px;
     }
     
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  
+  font-weight: bold;
+  font-size: 23px;
+  text-decoration: underline ;
+
+  &__player {
+    text-decoration: none;
+    margin: auto 10px;
+  }
 }

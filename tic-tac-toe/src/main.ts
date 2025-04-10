@@ -2,24 +2,29 @@ import './style.scss'
 
 
 // Step1: Capturing elements on the elements on the DOM
-const tiles = document.querySelectorAll<HTMLButtonElement>(".game__tile")
-const turn = document.querySelector<HTMLDivElement>(".game__turn")
+const tiles = document.querySelectorAll<HTMLDivElement>(".game__tile")
+const turn = document.querySelector<HTMLDivElement>(".turn-display")
+
+let currentPlayer: string = 'X';
 
 if(!turn || !tiles){
-throw new Error ("Do not have element")
+    throw new Error (`There's an issue with one of the selectors: 
+    tiles => ${tiles}, turn display => ${turn}`);
 }
+
+//test
 turn.innerText = "Player X's Turn TS";
 // button.addEventListener("click, func")
-console.dir(tiles);
+
 
 // function when each tile is clicked
-const tileClickEvents = (event: Event)=> {
+const tileClickEvents = (event: Event) => {
     // statement management - what state si it currently in
-
-    const currentTile = event.currenttarget as HTMLButtonElement;
-    if (currentTile.textContent !== '') return;
+    const currentTile = event.currentTarget as HTMLDivElement;
+    // if (currentTile.innerText !== '') return;
     // on each click display the current player
-    currentTile.textContent = 'X';   
+    currentTile.innerText = currentPlayer;  
+    
 }
 
 

@@ -1,5 +1,5 @@
 :root {
-  margin: 50px auto;
+  margin: 10px auto;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -20,18 +20,7 @@
   padding: 15px;
 }
 
-.game {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 350px;
-  height: 350px;
-  // justify-content: center;
-  margin: 10px auto;
-  
-  padding: 20px;
-  border: 1px solid red;
-
-    &__turn{
+.turn {
       font-size: 23px;
       grid-column: 1 / 4;
       text-align: center;
@@ -39,7 +28,36 @@
       height: 50px;
       align-items: center;
       border: 3px ridge whitesmoke;
-      margin: 5px auto;
+      margin: 0px auto;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 350px;
+  height: 350px;
+  // justify-content: center;
+  margin: 10px auto;
+  // gap: 0px;
+  
+  padding: 0px;
+  border: 1px solid red;
+
+    &__tile {
+      background-color: white;
+      color: black;
+      
+
+      text-align: center;
+      border-right: 10px solid yellow;
+      border-bottom: 10px solid yellow;
+
+      &--norborder {
+        border-right: none;
+      }
+      &--nobborder {
+        border-bottom: none;
+      }
     }
     
 }

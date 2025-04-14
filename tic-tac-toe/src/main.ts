@@ -12,19 +12,34 @@ if(!turn || !tiles){
     tiles => ${tiles}, turn display => ${turn}`);
 }
 
-//test
-turn.innerText = "Player X's Turn TS";
-// button.addEventListener("click, func")
+// set turn display 
+turn.innerText = `It's Player ${currentPlayer}'s Turn`;
+
 
 
 // function when each tile is clicked
 const tileClickEvents = (event: Event) => {
-    // statement management - what state si it currently in
-    const currentTile = event.currentTarget as HTMLDivElement;
-    // if (currentTile.innerText !== '') return;
-    // on each click display the current player
-    currentTile.innerText = currentPlayer;  
-    
+  // statement management - what state si it currently in
+  const currentTile = event.currentTarget as HTMLDivElement;
+
+  // Prevent changing a tile once it contains a player
+  if (currentTile.innerText !== "") return;
+
+  // on each click display the current player on tile
+  currentTile.innerText = currentPlayer;
+
+
+  //check for win
+  // check for draw
+  //switch turns
+
+  // on each click - check current player and switch. Update turn display on each click
+  if (currentPlayer === "X") {
+    currentPlayer = "O";
+  } else {
+    currentPlayer = "X";
+  };
+  turn.innerText = `It's Player ${currentPlayer}'s turn`;
 }
 
 
@@ -32,5 +47,5 @@ const tileClickEvents = (event: Event) => {
 // Add event Listener for to add functionality to each click of 
 // a. tile
 tiles.forEach((tile) => {
-    tile.addEventListener('click', tileClickEvents);
+    tile.addEventListener('click', tileClickEvents, { once: true });
 })

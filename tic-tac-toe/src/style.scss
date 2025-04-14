@@ -6,7 +6,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color:#ACC8E5;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -33,20 +33,30 @@
 
 .game {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);  // 3 equal columns
   width: 350px;
   height: 350px;
   // justify-content: center;
+  // align-items: center;
   margin: 10px auto;
-  // gap: 0px;
-  
-  padding: 0px;
-  border: 1px solid red;
+  // border-radius: 30%;
+  // gap: 5px;
+  // padding: 0px;
+  // border: 1px solid red;
 
     &__tile {
-      background-color: white;
+      aspect-ratio: 1 / 1; //
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // background-color: white;
       color: black;
+      font-size: 30px;
+      font-weight: bold;
       text-align: center;
+      box-sizing: border-box;
       border-right: 5px solid yellow;
       border-bottom: 5px solid yellow;
       // padding-top: 48px;

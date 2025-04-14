@@ -1,9 +1,21 @@
 import './style.scss'
 
 
-// Step1: Capturing elements on the elements on the DOM
-const tiles = document.querySelectorAll<HTMLDivElement>(".game__tile")
-const turn = document.querySelector<HTMLDivElement>(".turn-display")
+// Capturing elements on the elements on the DOM
+const tiles = document.querySelectorAll<HTMLDivElement>(".game__tile");
+const turn = document.querySelector<HTMLDivElement>(".turn-display");
+
+// const gameBoard: sting[][] = [
+//     [0, 0], [0, 1], [0, 2], //top row
+//     [1, 0], [1, 1], [1, 2],
+//     [2, 0], [2, 1], [2, 2] // bottom row
+// ];
+
+// const tilePositions: number[][] = [
+//     [0, 0], [0, 1], [0, 2], //top row
+//     [1, 0], [1, 1], [1, 2],
+//     [2, 0], [2, 1], [2, 2] // bottom row
+// ];
 
 let currentPlayer: string = 'X';
 
@@ -28,17 +40,17 @@ const tileClickEvents = (event: Event) => {
   // on each click display the current player on tile
   currentTile.innerText = currentPlayer;
 
-
-  //check for win
+  // check for win
   // check for draw
-  //switch turns
 
-  // on each click - check current player and switch. Update turn display on each click
+  // on each click check current player and switch
   if (currentPlayer === "X") {
     currentPlayer = "O";
   } else {
     currentPlayer = "X";
-  };
+  }
+
+  // on each click Update turn display on each click
   turn.innerText = `It's Player ${currentPlayer}'s turn`;
 }
 
@@ -46,6 +58,7 @@ const tileClickEvents = (event: Event) => {
 
 // Add event Listener for to add functionality to each click of 
 // a. tile
-tiles.forEach((tile) => {
+tiles.forEach((tile, index) => {
+    // const [row, col] = tilePositions[index];
     tile.addEventListener('click', tileClickEvents, { once: true });
 })

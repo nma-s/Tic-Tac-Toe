@@ -1,3 +1,5 @@
+@use './media-queries';
+
 :root {
   margin: 10px auto;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -12,7 +14,18 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 428px;
+  @include media-queries.mobile{
+    max-width: 428px;
+  }
+  @include media-queries.desktop {
+    max-width: 1728px;
+  }
+  
+}
+
+h1 {
+  text-align: center;
+  text-shadow: 1px 1px 1px #1F0945;
 }
 
 .restart {
@@ -38,7 +51,7 @@
   height: 350px;
   // justify-content: center;
   // align-items: center;
-  margin: 10px auto;
+  margin: 20px auto;
   // border-radius: 30%;
   // gap: 5px;
   // padding: 0px;
@@ -51,15 +64,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      // background-color: white;
-      color: black;
-      font-size: 30px;
+      
+      font-family: cursive;
+      color:#1F0945 ;
+      font-size: 34px;
       font-weight: bold;
       text-align: center;
       box-sizing: border-box;
       border-right: 5px solid yellow;
       border-bottom: 5px solid yellow;
-      // padding-top: 48px;
 
       &--norborder {
         border-right: none;
@@ -82,6 +95,10 @@
   
   font-weight: bold;
   border: 3px ridge whitesmoke;
+  @include media-queries.desktop {
+    max-width: 90%;
+    margin: 0px 50px;
+  }
 
   h2 {
     text-decoration: underline;
@@ -95,4 +112,8 @@
   &__player {
     margin: auto 10px;
   }
+}
+
+p {
+  text-align: center;
 }

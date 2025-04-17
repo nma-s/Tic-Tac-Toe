@@ -51,10 +51,6 @@ const tileClickEvents = (event: Event) => {
       if (currentPlayer === "X") {
         xScoreValue++;
         xScore.innerText = `Player X = ${xScoreValue.toString()}`;
-
-        tiles.forEach((tile) => {
-          tile.innerText = "";
-        });
       } else {
         oScoreValue++;
         oScore.innerText = `Player O = ${oScoreValue.toString()}`;

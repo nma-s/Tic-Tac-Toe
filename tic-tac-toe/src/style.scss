@@ -73,17 +73,26 @@
 
 .score {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 20px;
+  margin-top: 10px;
 
   
   font-weight: bold;
-  font-size: 23px;
-  text-decoration: underline ;
+  border: 3px ridge whitesmoke;
+
+  h2 {
+    text-decoration: underline;
+  }
+
+  &__tally {
+    display: flex;
+  }
+
 
   &__player {
-    text-decoration: none;
     margin: auto 10px;
   }
 }

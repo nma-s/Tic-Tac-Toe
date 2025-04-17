@@ -6,7 +6,8 @@ const tiles = document.querySelectorAll<HTMLDivElement>(".game__tile");
 const turn = document.querySelector<HTMLDivElement>(".turn-display");
 const gameboard = document.querySelector<HTMLDivElement>(".game");
 const xScore = document.querySelector<HTMLDivElement>(".score__player--x");
-const oScore = document.querySelector<HTMLDivElement>(".score__player--o")
+const oScore = document.querySelector<HTMLDivElement>(".score__player--o");
+const btn = document.querySelector<HTMLButtonElement>("button")
 
 const winningCombinations: number[][] = [
   [0, 1, 2],
@@ -21,9 +22,11 @@ const winningCombinations: number[][] = [
 
 let currentPlayer: string = 'X';
 let xScoreValue = 0;
+let oScoreValue = 0;
+let roundsPlayed = 0;
 
 
-if(!turn || !tiles || !gameboard || !xScore || !oScore){
+if(!turn || !tiles || !gameboard || !xScore || !oScore || !btn){
     throw new Error (`There's an issue with one of the selectors: 
     tiles => ${tiles}, turn display => ${turn}`);
 }
@@ -35,7 +38,6 @@ turn.innerText = `It's Player ${currentPlayer}'s Turn`;
 
 // function when each tile is clicked
 const tileClickEvents = (event: Event) => {
-  // statement management - what state si it currently in
   const currentTile = event.currentTarget as HTMLDivElement;
 
   // Prevent changing a tile once it contains a player
@@ -45,12 +47,24 @@ const tileClickEvents = (event: Event) => {
   currentTile.innerText = currentPlayer;
 
   // check for win
-  if (checkWin(currentPlayer)) {
-    if(currentPlayer === 'X'){
-      xScoreValue++;
-      xScore.innerText = xScoreValue.toString();
+    if (checkWin(currentPlayer)) {
+      if (currentPlayer === "X") {
+        xScoreValue++;
+        xScore.innerText = `Player X = ${xScoreValue.toString()}`;
+
+        tiles.forEach((tile) => {
+          tile.innerText = "";
+        });
+      } else {
+        oScoreValue++;
+        oScore.innerText = `Player O = ${oScoreValue.toString()}`;
+      }
+      setTimeout(() => {
+        resetBoard();
+      }, 2000);
+
+      return;
     }
-  }
   // check for draw
 
   // on each click check current player and switch
@@ -65,17 +79,32 @@ const tileClickEvents = (event: Event) => {
 }
 
 const checkWin = (currentPlayer: string): boolean => {
-  for (let i = 0; i < winningCombinations.length){
+  for (let i = 0; i < winningCombinations.length; i++){
     const [a , b , c] = winningCombinations[i];
-    if(tiles[a].innerHTML === currentPlayer && 
-      tiles[b].innerHTML === currentPlayer && 
-      tiles[c].innerHTML === currentPlayer) {
+    if(tiles[a].innerText === currentPlayer && 
+      tiles[b].innerText === currentPlayer && 
+      tiles[c].innerText === currentPlayer) {
         return true
       }
   }
   return false;
 }
 
+const resetBoard = () => {
+  tiles.forEach((tile) => {
+    tile.innerText = "";
+    tile.removeEventListener('click', tileClickEvents);
+    tile.addEventListener('click', tileClickEvents);
+  });
+}
+
+const restartGame = () => {
+    tiles.forEach(tile => {
+      tile.innerText = "";
+    });
+    oScore.innerText = `Player O = 0`;
+    xScore.innerText = `Player X = 0`;
+};
 
 
 // Add event Listener for to add functionality to each click of 
@@ -83,3 +112,5 @@ const checkWin = (currentPlayer: string): boolean => {
 tiles.forEach((tile, index) => {
     tile.addEventListener('click', tileClickEvents, { once: true });
 })
+// b. restart button
+ btn.addEventListener('click', restartGame);

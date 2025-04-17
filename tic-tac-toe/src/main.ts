@@ -62,6 +62,7 @@ const tileClickEvents = (event: Event) => {
       return;
     }
   // check for draw
+  
 
   // on each click check current player and switch
   if (currentPlayer === "X") {

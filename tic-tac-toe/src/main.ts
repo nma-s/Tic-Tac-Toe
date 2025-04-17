@@ -23,7 +23,6 @@ const winningCombinations: number[][] = [
 let currentPlayer: string = 'X';
 let xScoreValue = 0;
 let oScoreValue = 0;
-let roundsPlayed = 0;
 
 
 if(!turn || !tiles || !gameboard || !xScore || !oScore || !btn){
@@ -62,7 +61,7 @@ const tileClickEvents = (event: Event) => {
       return;
     }
   // check for draw
-  
+
 
   // on each click check current player and switch
   if (currentPlayer === "X") {

@@ -105,7 +105,7 @@ const restartGame = () => {
 
 // Add event Listener for to add functionality to each click of 
 // a. tile
-tiles.forEach((tile, index) => {
+tiles.forEach((tile) => {
     tile.addEventListener('click', tileClickEvents, { once: true });
 })
 // b. restart button

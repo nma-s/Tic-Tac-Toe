@@ -4,5 +4,5 @@ export default defineConfig({
   test: {
     globals: true,
   },
-  base: "/Tic-Tac-Toe/",
+  base: "/Tic-Tac-Toe",
 });
